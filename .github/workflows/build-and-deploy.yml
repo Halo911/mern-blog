@@ -22,9 +22,6 @@ jobs:
         uses: actions/configure-pages@v4
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
-        with:
-          # Upload dist folder
-          path: './dist'
   deploy:
     name: Deploy
     needs: build
