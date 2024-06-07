@@ -42,7 +42,7 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           name: build
-          path: dist
+          path: ./client/dist
   deploy:
     name: Deploy
     needs: build
