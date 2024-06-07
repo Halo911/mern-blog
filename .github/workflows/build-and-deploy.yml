@@ -20,7 +20,9 @@ concurrency:
 
 jobs:
   build:
-    name: Build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -36,14 +38,15 @@ jobs:
         run: npm run build
       - name: Setup Pages
         uses: actions/configure-pages@v4
-      - name: Archive Production Artifact
-        uses: actions/upload-artifact@v4
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
         with:
           name: build
           path: dist
   deploy:
-    name: Deploy
-    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
