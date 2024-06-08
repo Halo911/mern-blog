@@ -20,25 +20,22 @@ export default function App() {
     <BrowserRouter>
       <ScrollToTop />
       <Header />
-      <Routes>
-        <Route path="/mern-blog/" element={<Home />} />
-        <Route path="/mern-blog/about" element={<About />} />
-        <Route path="/mern-blog/projects" element={<Projects />} />
-        <Route path="/mern-blog/search" element={<Search />} />
+      <Route>
+        <Route path="/" element={<Home />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/projects" element={<Projects />} />
+        <Route path="/search" element={<Search />} />
         <Route element={<PrivateRoute />}>
-          <Route path="/mern-blog/dashboard" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
         </Route>
         <Route element={<OnlyAdminPrivateRoute />}>
-          <Route path="/mern-blog/create-post" element={<CreatePost />} />
-          <Route
-            path="/mern-blog/update-post/:postId"
-            element={<UpdatePost />}
-          />
+          <Route path="/create-post" element={<CreatePost />} />
+          <Route path="/update-post/:postId" element={<UpdatePost />} />
         </Route>
-        <Route path="/mern-blog/sign-up" element={<SignUp />} />
-        <Route path="/mern-blog/sign-in" element={<SignIn />} />
-        <Route path="/mern-blog/post/:postSlug" element={<PostPage />} />
-      </Routes>
+        <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/sign-in" element={<SignIn />} />
+        <Route path="/post/:postSlug" element={<PostPage />} />
+      </Route>
       <Footer />
     </BrowserRouter>
   );
